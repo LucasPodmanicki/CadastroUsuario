@@ -5,7 +5,13 @@
 
 
 $(document).ready(function () {
-    $('#table-contatos').DataTable({
+    getDatatable("#table-contatos")
+    getDatatable("#table-usuarios")
+
+});
+   
+function getDatatable(id) {
+    $(id).DataTable({
         "ordering": true,
         "paging": true,
         "searching": true,
@@ -34,7 +40,8 @@ $(document).ready(function () {
         }
     });
 
-});
+};
+
 
 
 $(".telefone").mask("(00) 00000-0000");
