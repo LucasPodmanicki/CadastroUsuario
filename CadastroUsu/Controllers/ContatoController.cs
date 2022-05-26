@@ -27,12 +27,12 @@ namespace CadastroUsu.Controllers
         }
 
 
-        [Route("Editar/{i}")]
-        public IActionResult Editar(int i) // Passando o ID especifico para a edição
-        {
-            ContatoModel contato = _contatoRepositorio.ListarPodId(i);
-            return View(contato);
-        }
+            [Route("Editar/{i}")]
+            public IActionResult Editar(int i) // Passando o ID especifico para a edição
+            {
+                ContatoModel contato = _contatoRepositorio.ListarPodId(i);
+                return View(contato);
+            }
 
         public IActionResult ApagarConfirmacao(int i)
         {

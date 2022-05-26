@@ -6,7 +6,7 @@
 <div class="text-center">
     
     <div class = "d-grid gap2 d-md-flex justify-content-md-start">
-        <a class ="btn btn-primary" role="button" asp-controller="Usuario" asp-action="Criar">Adicionar Novo Usuário</a>
+        <a class ="btn btn-primary" role="button" asp-controller="Usuario" asp-action="Criar">Adicionar Novo Participante</a>
     </div>
     <br>
 
@@ -37,6 +37,7 @@
       <th scope="col">Nome</th>
       <th scope="col">Login</th>
       <th scope="col">Email</th>
+      <th scope="col">Perfil</th>
              <th scope="col">Data de cadastro</th>
 
       <th scope="col"></th>
@@ -53,6 +54,7 @@
                           <td>@usuario.Name</td>
                           <td>@usuario.Login</td>
                           <td>@usuario.Email</td>
+                          <td>@(usuario.Perfil == CadastroUsu.Enums.PerfilEnum.Admin ? "Administrador" : "Padrao")</td>
                           <td>@usuario.DataCadastro</td>
                           <td>
                               <a role = "button" class="btn btn-primary" asp-route-i="@usuario.Id"  asp-controller="Usuario" asp-action="Editar">Editar</a>
