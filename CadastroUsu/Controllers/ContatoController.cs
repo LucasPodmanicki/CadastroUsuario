@@ -1,10 +1,12 @@
-﻿using CadastroUsu.Models;
+﻿using CadastroUsu.Filters;
+using CadastroUsu.Models;
 using CadastroUsu.Repositorio;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
 namespace CadastroUsu.Controllers
 {
+    [PaginaParaUsuarioLogado]
     public class ContatoController : Controller
     {
 
