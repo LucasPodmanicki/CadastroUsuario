@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using CadastroUsu.Enums;
 using System;
+using CadastroUsu.Helper;
 
 namespace CadastroUsu.Models
 {
@@ -23,7 +24,13 @@ namespace CadastroUsu.Models
 
         public bool SenhaValida(string senha)
         {
-            return Senha == senha;
+            return Senha == senha.GerarHash();
+        }
+
+        public void setSenhaHash()
+        {
+            Senha = Senha.GerarHash();
+
         }
 
     }
