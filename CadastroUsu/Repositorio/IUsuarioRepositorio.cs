@@ -8,6 +8,7 @@ namespace CadastroUsu.Repositorio
         // Chamar metodos no banco
 
         UsuarioModel BuscarPorLogin(string login);
+        UsuarioModel BuscarPorEmailELogin(string email, string login);    
         List<UsuarioModel> BuscarTodos();
         UsuarioModel BuscarPorID(int id);
         UsuarioModel Adicionar(UsuarioModel usuario);

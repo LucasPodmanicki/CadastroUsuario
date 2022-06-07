@@ -69,5 +69,10 @@ namespace CadastroUsu.Repositorio
 
             return true;
         }
+
+        public UsuarioModel BuscarPorEmailELogin(string email, string login)
+        {
+            return _context.Usuarios.FirstOrDefault(x => x.Email.ToUpper() == email.ToUpper() && x.Login.ToUpper() == login.ToUpper());
+        }
     }
 }

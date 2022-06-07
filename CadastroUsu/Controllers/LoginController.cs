@@ -25,6 +25,11 @@ namespace CadastroUsu.Controllers
             return View();
         }
 
+
+        public IActionResult RedefinirSenha()
+        {
+            return View();
+        }
         IActionResult Sair()
         {
             _sessao.RemoverSessaoUsuario();
@@ -64,6 +69,41 @@ namespace CadastroUsu.Controllers
             {
 
                 TempData["MensagemErro"] = $"Ops, não conseguimos realizar seu Login, tente novamante, detalhe do erro: {erro.Message}";
+                return RedirectToAction("Index");
+            }
+        }
+        [HttpPost]
+        public IActionResult EnviarLinkParaRedefinirSenha(RedefinirSenhaModel redefinirSenhaModel)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+
+                    UsuarioModel usuario = _usuarioRepositorio.BuscarPorEmailELogin(redefinirSenhaModel.Email, redefinirSenhaModel.Login);
+
+
+
+                    if (usuario != null)
+                    {
+                        string novaSenha = usuario.GerarNovaSenha();
+                        _usuarioRepositorio.Atualizar(usuario);
+
+
+
+                        TempData["MensagemSucesso"] = $"Enviamos para seu E-Mail cadastrado, uma nova senha!";
+                        return RedirectToAction("Index", "Login");
+                    }
+
+                    TempData["MensagemErro"] = $"Não conseguimos redefinir sua senha!";
+
+                }
+                return View("index");
+            }
+            catch (Exception erro)
+            {
+
+                TempData["MensagemErro"] = $"Ops, não conseguimos redefinir sua senha, tente novamante, detalhe do erro: {erro.Message}";
                 return RedirectToAction("Index");
             }
         }
